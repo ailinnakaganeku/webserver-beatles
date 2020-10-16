@@ -32,8 +32,6 @@ var beatles = [
 ];
 
 
-
-
 //Codificación 'utf-8' --> Template --> para formatear tipo texto
 //promisificar el readFile.
 //función para saber ---> cómo leo el archivo y dónde guardo la promesa 
@@ -117,5 +115,5 @@ const server = http
     }
   }
   })
-  
+
   server.listen(port);
