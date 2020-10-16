@@ -2,6 +2,8 @@ var http = require("http");
 var fs = require("fs");
 //fs: leer o escribir archivos que están
 //en tu computadora.
+ const port = 3000;
+
 
 var beatles = [
   {
@@ -28,6 +30,9 @@ var beatles = [
       "http://cp91279.biography.com/BIO_Bio-Shorts_0_Ringo-Starr_SF_HD_768x432-16x9.jpg",
   },
 ];
+
+
+
 
 //Codificación 'utf-8' --> Template --> para formatear tipo texto
 //promisificar el readFile.
@@ -58,7 +63,7 @@ function parse(html, response) {
 //levantar el servidor --> modulo http + función createServer (recibe una función de callback,
 //que recibe request y response)
 
-http
+const server = http
   .createServer(function (req, res) {
     //si la url es 'api' -> devolvemos el JSON beatles
 
@@ -74,8 +79,8 @@ http
       const beatle = req.url.split("/").pop();
       //si el filter me da TRUE me responde con un arreglo de un
       //solo beatle.
-      const response = beatles.filter(function (b) {
-        return encodeURI(b.name) === beatle;
+      const response = beatles.filter(function (x) {
+        return encodeURI(x.name) === beatle;
       })[0];
       //si no es undifined ->
       if (response) {
@@ -96,8 +101,8 @@ http
     //chequeo la url
     if (req.url[0] === "/" && req.url.length > 2) {
       const beatle = req.url.split("/").pop();
-      const response = beatles.filter(function (b) {
-        return encodeURI(b.name) === beatle;
+      const response = beatles.filter(function (x) {
+        return encodeURI(x.name) === beatle;
       })[0];
     
     if (response) {
@@ -111,4 +116,6 @@ http
         });
     }
   }
-  }).listen(3000, "127.0.0.1");
+  })
+  
+  server.listen(port);
