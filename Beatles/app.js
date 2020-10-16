@@ -31,7 +31,7 @@ var beatles = [
 
 //Codificación 'utf-8' --> Template --> para formatear tipo texto
 //promisificar el readFile.
-//cómo leo el archivo y dónde guardo la promesa 
+//función para saber ---> cómo leo el archivo y dónde guardo la promesa 
 var readFile = function (file) {
   return new Promise(function (resolve, reject) {
     fs.readFile(file, "utf-8", function (err, data) {
@@ -42,7 +42,7 @@ var readFile = function (file) {
 };
 
 //Levanto los archivos index.html y beatle.html
-//en cualquier parte de mi servidor puedo acceder
+//ahora en cualquier parte de mi servidor puedo acceder a profile y home
 const profile = readFile("./beatle.html");
 const home = readFile("./index.html");
 
